@@ -1,0 +1,85 @@
+﻿@model EVENT_ORGANIZER.Models.Booking
+
+@{
+    ViewData["Title"] = "Book an Event";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Medium width -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2>Book an Event</h2>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="Booking" method="post">
+                        <div class="mb-3">
+                            <label class="form-label text-dark">User ID</label>
+                            <input type="number" asp-for="UserId" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Event Name</label>
+                            <input type="text" asp-for="EventName" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.EventName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Location</label>
+                            <input type="text" asp-for="Location" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Venues</label>
+                            <input type="text" asp-for="Venues" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.Venues, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Services</label>
+                            <input type="text" asp-for="Services" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.Services, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Capacity</label>
+                            <input type="number" asp-for="Capacity" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.Capacity, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Description</label>
+                            <textarea asp-for="Description" class="form-control" required></textarea>
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Event Date</label>
+                            <input type="datetime-local" asp-for="EventDate" class="form-control" required />
+                            @Html.ValidationMessageFor(m => m.EventDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-dark">Booking Status</label>
+                            <select asp-for="BookingStatus" class="form-control">
+                                <option value="Pending">Pending</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                            @Html.ValidationMessageFor(m => m.BookingStatus, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">Confirm Booking</button>
+                            <a asp-action="BookingList" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

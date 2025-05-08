@@ -1,0 +1,43 @@
+﻿@model EVENT_ORGANIZER.Models.LoginRequest
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<div class="card-body text-center">
+    <h3 class="mb-3 text-white">EVENT ORGANIZER</h3>
+    <h4 class="mb-3 text-white">LOGIN</h4> <!-- Changed text color here -->
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post, null))
+    {
+        <div class="form-group mb-3">
+            @Html.TextBoxFor(a => a.Email, new { @class = "form-control", placeholder = "Email" })
+            @Html.ValidationMessageFor(a => a.Email, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group mb-3">
+            @Html.TextBoxFor(a => a.Password, new { @class = "form-control", @type = "password", placeholder = "Password" })
+            @Html.ValidationMessageFor(a => a.Password, null, new { @class = "text-danger" })
+        </div>
+        <button type="submit" class="btn gradient-btn w-100">Login</button>
+        @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+        {
+            <div class="row">
+                <div class="col-12 text-danger">
+                    @ViewBag.Error
+                </div>
+            </div>
+        }
+
+        <!-- Forgot Password and Register Links inside Div Tags -->
+        <div class="mt-3">
+            <div>
+                @Html.ActionLink("Forgot Password?", "ForgotPassword", "Login", null, new { @class = "d-block text-decoration-none" })
+            </div>
+            <div class="mt-2">
+                <span class="text-white">New User? </span>
+                @Html.ActionLink("Register Here", "Register", "Login", null, new { @class = "text-decoration-none" })
+            </div>
+        </div>
+    }
+</div>

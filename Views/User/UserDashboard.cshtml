@@ -1,0 +1,137 @@
+﻿    @model List<EventBookingModel>
+
+@{
+    ViewData["Title"] = "User Dashboard";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- Dashboard Content -->
+<div id="dashboardContent" class="mt-4">
+    <h2>Welcome, @ViewBag.FullName 👋</h2>
+
+
+    <div class="container mt-4">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3 class="mb-0">My Bookings</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Location</th>
+                                <th>Venue</th>
+                                <th>Services</th> 
+                                <th>Capacity</th>
+                                <th>Event Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in Model)
+                            {
+                                <tr>
+                                    <td>@booking.EventName</td>
+                                    <td>@booking.Location</td>
+                                    <td>@booking.Venues</td>
+                                    <td>@booking.Services</td>
+                                    <td>@booking.Capacity</td>
+                                    <td>@booking.EventDate.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>
+                                        <span class="badge @(booking.BookingStatus == "Cancelled" ? "bg-danger" : "bg-success")">
+                                            @booking.BookingStatus
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @if (booking.BookingStatus != "Cancelled")
+                                        {
+                                            <a asp-action="EditBooking" asp-route-id="@booking.BookingId" class="btn btn-warning btn-sm">Edit</a>
+                                            <a asp-action="CancelBooking" asp-route-id="@booking.BookingId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Cancel</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @* <div class="row mt-4">
+
+        <!-- Booking Summary -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-left-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <p class="card-text display-6">@ViewBag.TotalBookings</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Event -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-left-success">
+                <div class="card-body">
+                    <h5 class="card-title">Upcoming Event</h5>
+                    <p class="card-text">@ViewBag.UpcomingEvent ?? "No upcoming events"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Info -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-left-info">
+                <div class="card-body">
+                    <h5 class="card-title">Profile</h5>
+                    <p class="card-text">Edit your profile or change password.</p>
+                    <a href="/User/EditProfile" class="btn btn-sm btn-outline-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Bookings Table -->
+    <div class="card mt-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <strong>Recent Bookings</strong>
+        </div>
+        <div class="card-body">
+            @if (ViewBag.RecentBookings != null && ViewBag.RecentBookings.Count > 0)
+            {
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in ViewBag.RecentBookings)
+                        {
+                            <tr>
+                                <td>@booking.EventName</td>
+                                <td>@booking.EventDate.ToString("dd MMM yyyy")</td>
+                                <td>@booking.Location</td>
+                                <td>@booking.BookingStatus</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">No recent bookings found.</p>
+            }
+        </div>
+    </div>
+</div>
+ *@

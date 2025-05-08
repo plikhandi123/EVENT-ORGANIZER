@@ -1,0 +1,54 @@
+﻿@model List<EVENT_ORGANIZER.Models.Booking>
+
+@{
+    ViewData["Title"] = "Pending Bookings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h2>Pending Bookings</h2>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>User ID</th>
+                <th>Event Name</th>
+                <th>Location</th>
+                <th>Venue</th>
+                <th>Services</th>
+                <th>Capacity</th>
+                <th>Description</th>
+                <th>Event Date</th>
+                <th>Booking Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.BookingId</td>
+                    <td>@booking.UserId</td>
+                    <td>@booking.EventName</td>
+                    <td>@booking.Location</td>
+                    <td>@booking.Venues</td>
+                    <td>@booking.Services</td>
+                    <td>@booking.Capacity</td>
+                    <td>@booking.Description</td>
+                    <td>@booking.EventDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.BookingStatus</td>
+                    <td>
+                        <form method="post" asp-action="UpdateBookingStatus">
+                            <input type="hidden" name="bookingId" value="@booking.BookingId" />
+                            <button type="submit" name="status" value="Confirmed" class="btn btn-success btn-sm">Confirm</button>
+                            <button type="submit" name="status" value="Rejected" class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

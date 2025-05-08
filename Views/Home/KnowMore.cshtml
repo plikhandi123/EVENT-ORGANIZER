@@ -1,0 +1,174 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Know More";
+}
+<style>
+    .transparent-card {
+        background-color: rgba(255, 255, 255, 0.5); /* 50% opacity */
+        border: none; /* Optional: Remove border */
+    }
+</style>
+
+<div class="container-fluid mt-5" style="background: url('/images/img3.jpg') no-repeat center center/cover; animation: fadeIn 2s ease-in-out;">
+    <div class="text-center text-white">
+        <h1 class="display-4">About Our Event Planning Services</h1>
+        <p class="lead mt-4">
+            Welcome to Utsav! We specialize in organizing creative and innovative events tailored to your unique style.
+            Whether it's a wedding, corporate meet, birthday, or a social gathering, we handle every detail with perfection.
+        </p>
+
+        <h3>Why Choose Us?</h3>
+        <ul class="list-unstyled mt-3">
+            <li>✅ Experienced Event Managers</li>
+            <li>✅ Customized Theme Decorations</li>
+            <li>✅ Professional Catering & Venues</li>
+            <li>✅ Affordable Packages</li>
+            <li>✅ End-to-End Support</li>
+        </ul>
+        <a href="/Login/Index" class="btn btn-primary mt-4">Book Your Event Now</a>
+    </div>
+
+    <!-- Client Testimonials Section -->
+    <div class="mt-5">
+        <h3 class="text-center text-white">Client Testimonials</h3>
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="card transparent-card">
+                    <div class="card-body">
+                        <p class="card-text">"Utsav made our wedding day unforgettable. From the venue to the decoration, everything was perfect!"</p>
+                        <footer class="blockquote-footer">Jane & John Doe</footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="card transparent-card">
+                    <div class="card-body">
+                        <p class="card-text">"The team at Utsav went above and beyond to ensure our corporate event was a success. Highly recommended!"</p>
+                        <footer class="blockquote-footer">Emily White, CEO</footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card transparent-card">
+                    <div class="card-body">
+                        <p class="card-text">"The birthday party they organized for us was a hit! The kids loved every moment of it!"</p>
+                        <footer class="blockquote-footer">Michael & Sarah</footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Past Event Highlights Section -->
+<div class="mt-5">
+    <h3 class="text-center text-white">Past Event Highlights</h3>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h5 class="mt-2">Corporate Gala 2024</h5>
+        </div>
+        <div class="col-md-4 text-center">
+            <h5 class="mt-2">Wedding Celebration 2023</h5>
+        </div>
+        <div class="col-md-4 text-center">
+            <h5 class="mt-2">Birthday Bash 2022</h5>
+        </div>
+    </div>
+</div>
+
+
+<!-- Meet the Team Section -->
+<div class="mt-5">
+    <h3 class="text-center text-white">Meet the Team</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Samantha Green</h5>
+                    <p class="card-text">Lead Event Planner</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">David Brown</h5>
+                    <p class="card-text">Catering Specialist</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Olivia Smith</h5>
+                    <p class="card-text">Venue Coordinator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======= Gallery Section ======= -->
+<div id="gallery">
+
+    <div class="container" data-aos="fade-up">
+        <div class="section-header">
+            <h2>Gallery</h2>
+            <p>Check our gallery from the recent events</p>
+        </div>
+    </div>
+
+    <div class="gallery-slider swiper">
+        <div class="swiper-wrapper align-items-center">
+
+            <div class="swiper-slide">
+                <a href="/images/img1.jpg" class="gallery-lightbox">
+                    <img src="/images/img1.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img2.jpg" class="gallery-lightbox">
+                    <img src="/images/img2.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img3.jpg" class="gallery-lightbox">
+                    <img src="/images/img3.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img4.jpg" class="gallery-lightbox">
+                    <img src="/images/img4.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img5.jpg" class="gallery-lightbox">
+                    <img src="/images/img5.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img6.jpg" class="gallery-lightbox">
+                    <img src="/images/img6.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img7.jpg" class="gallery-lightbox">
+                    <img src="/images/img7.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="/images/img8.jpg" class="gallery-lightbox">
+                    <img src="/images/img8.jpg" class="img-fluid" alt="">
+                </a>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+</div>
+
+<!-- End Gallery Section -->

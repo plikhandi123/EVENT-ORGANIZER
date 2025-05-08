@@ -1,0 +1,128 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - White Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e3c72;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background-color: #fff;
+            padding: 20px;
+            color: #000;
+            border-right: 2px solid #ddd;
+        }
+
+            .sidebar .nav-link {
+                color: #333;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link:hover,
+                .sidebar .dropdown-item:hover {
+                    background-color: #f1f1f1;
+                    color: #000;
+                    border-radius: 5px;
+                }
+
+        .card {
+            border-radius: 10px;
+            color: white;
+        }
+
+        .bg-blue {
+            background-color: #007bff;
+        }
+
+        .bg-red {
+            background-color: #dc3545;
+        }
+
+        .bg-cyan {
+            background-color: #17a2b8;
+        }
+
+        .bg-green {
+            background-color: #28a745;
+        }
+
+        .chart-placeholder {
+            height: 250px;
+            background-color: #2e5eaa;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 250px;
+            color: #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar p-3">
+            <div class="text-center mb-3">
+                <img src="~/images/profile-circle.png" class="rounded-circle" width="80" height="80" alt="User Profile">
+            </div>
+
+            <h4>User Panel</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("UserDashboard", "User")">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Services", "User")">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("BookNow", "User")">Booking</a>
+                </li>
+
+               @*  <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("BookingList", "User")">My Bookings</a>
+                </li> *@
+
+                @* <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Customization", "User")">Customization</a>
+                </li>
+
+                *@
+                
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="@Url.Action("Logout", "Login")">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+
+   
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   @*  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script> *@
+
+</body>
+</html>

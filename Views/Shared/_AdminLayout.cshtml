@@ -1,0 +1,125 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - White Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e3c72;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background-color: #fff;
+            padding: 20px;
+            color: #000;
+            border-right: 2px solid #ddd;
+        }
+
+            .sidebar .nav-link {
+                color: #333;
+                font-weight: 500;
+            }
+
+                .sidebar .nav-link:hover,
+                .sidebar .dropdown-item:hover {
+                    background-color: #f1f1f1;
+                    color: #000;
+                    border-radius: 5px;
+                }
+
+        .card {
+            border-radius: 10px;
+            color: white;
+        }
+
+        .bg-blue {
+            background-color: #007bff;
+        }
+
+        .bg-red {
+            background-color: #dc3545;
+        }
+
+        .bg-cyan {
+            background-color: #17a2b8;
+        }
+
+        .bg-green {
+            background-color: #28a745;
+        }
+
+        .chart-placeholder {
+            height: 250px;
+            background-color: #2e5eaa;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 250px;
+            color: #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+        <!-- White Sidebar -->
+        <div class="sidebar">
+            <div class="text-center mb-3">
+                <img src="~/images/profile-circle.png" class="rounded-circle" width="80" height="80" alt="User Profile">
+            </div>
+            <h4>Admin Panel</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("AdminDashboard", "Admin")">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Venues", "Admin")">Venues</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("VenueList", "Admin")">VenueList</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Events", "Admin")">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("EventList", "Admin")">EventList</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Services", "Admin")">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("ServiceList", "Admin")">ServiceList</a></li>
+
+            @* <li>
+            <a class="nav-link text-black dropdown-toggle" href="#" id="customizationDropdown" role="button" data-bs-toggle="collapse" data-bs-target="#customizationMenu" aria-expanded="false">Customizations</a>
+            <div class="collapse" id="customizationMenu">
+                <ul class="list-unstyled ps-3">
+                    <li><a class="nav-link text-white" href="@Url.Action("Light","Admin")">Light</a></li>
+                    <li><a class="nav-link text-white" href="@Url.Action("Equipment","Admin")">Equipment</a></li>
+                    <li><a class="nav-link text-white" href="@Url.Action("Catering","Admin")">Catering</a></li>
+                    <li><a class="nav-link text-white" href="@Url.Action("Decoration","Admin")">Decoration</a></li>
+                    <li><a class="nav-link text-white" href="@Url.Action("MusicSystem","Admin")">Music System</a></li>
+                </ul>
+            </div>
+            </li> *@
+@*                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Booking", "Admin")">Booking</a></li>
+ *@                <li class="nav-item"><a class="nav-link" href="@Url.Action("BookingList", "Admin")">BookingList</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("BookingHistory", "Admin")">BookingHistory</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("CurrentBookings", "Admin")">CurrentBookings</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("PendingBookings", "Admin")">PendingBookings</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("UserList", "Admin")">UserList</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="@Url.Action("Logout", "Login")">Logout</a></li>
+
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

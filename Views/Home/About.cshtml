@@ -1,0 +1,142 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "About Us";
+}
+
+<!-- Hero Start -->
+<div class="container-fluid py-6 my-6 mt-0" style="background: url('~/wwwroot/Images/img2.jpg') center center / cover no-repeat; background-color: rgba(255,255,255,0.7);">
+    <div class="container text-center animated bounceInDown">
+        <h1 class="display-1 mb-4 text-dark">About us</h1>
+        <ol class="breadcrumb justify-content-center mb-0 animated bounceInDown">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item text-dark" aria-current="page">About us</li>
+        </ol>
+    </div>
+</div>
+<!-- Hero End -->
+<!-- About Start -->
+<div class="container-fluid py-6" id="about">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
+                <img src="~/Images/img9.jpg" class="img-fluid rounded" alt="About Image">
+            </div>
+            <div class="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
+                <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">About Us</small>
+                @* <h1 class="display-5 mb-4">
+                    Trusted By <span class="counter" data-target="200">0</span>+ Satisfied Clients
+                </h1> *@
+                <p class="mb-4">
+                    Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                    dolor in reprehenderit in voluptate velit esse cillum dolore.
+                </p>
+                <div class="row g-4 text-dark mb-5">
+                    <div class="col-sm-6">
+                        <i class="fas fa-share text-primary me-2"></i> Fresh and Fast Food Delivery
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fas fa-share text-primary me-2"></i> 24/7 Customer Support
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fas fa-share text-primary me-2"></i> Easy Customization Options
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fas fa-share text-primary me-2"></i> Delicious Deals for Delicious Meals
+                    </div>
+                </div>
+                <a href="#services" class="btn btn-primary py-3 px-5 rounded-pill">Learn More <i class="fas fa-arrow-right ps-2"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<!-- Features Counter Start -->
+<div class="container-fluid py-6 bg-light">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="p-4 rounded shadow-sm bg-white">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h1 class="counter" data-target="200">0</h1>
+                    <p class="mb-0">Happy Clients</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="p-4 rounded shadow-sm bg-white">
+                    <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+                    <h1 class="counter" data-target="1500">0</h1>
+                    <p class="mb-0">Dishes Delivered</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
+                <div class="p-4 rounded shadow-sm bg-white">
+                    <i class="fas fa-award fa-3x text-primary mb-3"></i>
+                    <h1 class="counter" data-target="50">0</h1>
+                    <p class="mb-0">Awards Won</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
+                <div class="p-4 rounded shadow-sm bg-white">
+                    <i class="fas fa-smile-beam fa-3x text-primary mb-3"></i>
+                    <h1 class="counter" data-target="99">0</h1>
+                    <p class="mb-0">Customer Satisfaction %</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features Counter End -->
+<!-- Testimonials Start -->
+<div class="container-fluid py-6" id="testimonials">
+    <div class="container">
+        <div class="text-center mb-5">
+            <small class="d-inline-block fw-bold text-dark text-uppercase alert-info border border-primary rounded-pill px-4 py-1 mb-3">Testimonials</small>
+            <h1 class="display-5">What Our Clients Say</h1>
+        </div>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+                <div class="carousel-item active">
+                    <p class="lead">"Absolutely amazing service! Food arrived hot and tasty, highly recommended."</p>
+                    <h5>- Alex Johnson</h5>
+                </div>
+                <div class="carousel-item">
+                    <p class="lead">"Customer service is top-notch. They went above and beyond for my order!"</p>
+                    <h5>- Priya Sharma</h5>
+                </div>
+                <div class="carousel-item">
+                    <p class="lead">"Best deals for meals in town. Great value for money!"</p>
+                    <h5>- David Lee</h5>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Testimonials End -->
+<!-- Counter Animation Script -->
+<script>
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+        counter.innerText = '0';
+        const updateCounter = () => {
+            const target = +counter.getAttribute('data-target');
+            const current = +counter.innerText;
+            const increment = target / 200;
+            if (current < target) {
+                counter.innerText = `${Math.ceil(current + increment)}`;
+                setTimeout(updateCounter, 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCounter();
+    });
+</script>

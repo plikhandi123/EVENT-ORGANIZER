@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Our Venues";
+
+}
+<!-- Hero Start -->
+<div class="container-fluid bg-light py-6 my-6 mt-0">
+    <div class="container text-center animated bounceInDown">
+        <h1 class="display-1 mb-4">Venues</h1>
+        <ol class="breadcrumb justify-content-center mb-0 animated bounceInDown">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item text-dark" aria-current="page">Venues</li>
+        </ol>
+    </div>
+</div>
+<!-- Hero End -->
+<!-- Venues Start -->
+<div class="container py-5">
+    @if (Model?.Venues != null && Model.Venues.Any())
+    {
+        <div class="row">
+            @foreach (var venue in Model.Venues)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@(venue.ImageUrl ?? "~/images/venue-placeholder.jpg")" class="card-img-top" alt="Venue Image">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@venue.Name</h5>
+                            <p class="card-text">@venue.Description</p>
+                            <a href="@Url.Action("Details", "Venue", new { id = venue.Id })" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No venues available.</p>
+    }
+
+</div>
+<!-- Venues End -->

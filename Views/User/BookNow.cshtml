@@ -1,0 +1,325 @@
+﻿ @model EVENT_ORGANIZER.Models.EventBookingModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@{
+    ViewData["Title"] = "Book an Event";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg" style="max-width: 700px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="text-center mb-0">Book an Event</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="BookNow" method="post">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="EventName" class="form-label text-dark">Event Name</label>
+                        <select id="EventName" name="EventName" asp-for="EventName" asp-items="ViewBag.EventList" class="form-control form-control-sm dynamic-dropdown" required>
+                            <option value="">-- Select Event --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Location" class="form-label text-dark">Location</label>
+                        <select id="Location" name="Location" asp-for="Location" asp-items="ViewBag.LocationList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Location --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Venues" class="form-label text-dark">Venues</label>
+                        <select id="Venues" name="Venues" asp-for="Venues" asp-items="ViewBag.VenueList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Venue --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Services" class="form-label text-dark">Services</label>
+                        <select id="Services" name="Services" asp-for="Services" asp-items="ViewBag.ServiceList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Service --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Capacity" class="form-label text-dark">Capacity</label>
+                        <select id="Capacity" name="Capacity" asp-for="Capacity" asp-items="ViewBag.CapacityList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Capacity --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="EventDate" class="form-label text-dark">Event Date</label>
+                        <input id="EventDate" asp-for="EventDate" type="datetime-local" class="form-control form-control-sm" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="Description" class="form-label text-dark">Description</label>
+                        <textarea id="Description" asp-for="Description" class="form-control form-control-sm"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span> <!-- This line is important -->
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="BookingList" class="btn btn-secondary btn-sm">Cancel</a>
+                    <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 👇 New Section: Venue Lists -->
+@* <div class="container mt-5">
+    <ul class="nav nav-tabs" id="venueTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="available-tab" data-bs-toggle="tab" data-bs-target="#available" type="button">Available Venues</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="booked-tab" data-bs-toggle="tab" data-bs-target="#booked" type="button">Booked Venues</button>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="venueTabContent">
+        <!-- ✅ Available Venues -->
+        <div class="tab-pane fade show active" id="available" role="tabpanel">
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.AvailableVenues?.Any() ?? true)
+                    {
+                        foreach (var venue in Model.AvailableVenues)
+                        {
+                            <tr>
+                                <td>@venue.VenueName</td>
+                                <td>@venue.Location</td>
+                                <td>@venue.Capacity</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="3">No available venues found.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ✅ Booked Venues -->
+        <div class="tab-pane fade" id="booked" role="tabpanel">
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Venue</th>
+                        <th>Date</th>
+                        <th>Booked By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.BookedVenues?.Any() ?? false)
+                    {
+                        foreach (var booked in Model.BookedVenues)
+                        {
+                            <tr>
+                                <td>@booked.VenueName</td>
+                                <td>@booked.BookedDate.ToShortDateString()</td>
+                                <td>@booked.BookedBy</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="3">No bookings found.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+ *@
+<!-- jQuery for Dynamic Event Loading -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#EventName").change(function () {
+            var eventId = $(this).val();
+
+            if (eventId) {
+                $.ajax({
+                    url: '@Url.Action("GetEventDetails", "User")',
+                    type: 'GET',
+                    data: { eventId: eventId },
+                    success: function (data) {
+                        if (data) {
+                            $("#Location").val(data.location);
+                            $("#Venues").val(data.venue);
+                            $("#Services").val(data.service);
+                            $("#Capacity").val(data.capacity);
+                        } else {
+                            $("#Location, #Venues, #Services, #Capacity").val('');
+                        }
+                    },
+                    error: function () {
+                        alert("Error fetching event details.");
+                    }
+                });
+            } else {
+                $("#Location, #Venues, #Services, #Capacity").val('');
+            }
+        });
+    });
+</script>
+
+
+@* <div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg" style="max-width: 700px; width: 100%;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="text-center mb-0">Book an Event</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="BookEvent" asp-controller="UserController" method="post">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="EventName" class="form-label text-dark">Event Name</label>
+                        <select id="EventName" name="EventName" asp-for="EventName" asp-items="ViewBag.EventList" class="form-control form-control-sm dynamic-dropdown" required>
+                            <option value="">-- Select Event --</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select id="Location" name="Location" class="form-control">
+                            <option value="">-- Select Location --</option>
+                            <option value="Bhubaneswar">Bhubaneswar</option>
+                            <option value="Sambalpur">Sambalpur</option>
+                            <option value="Cuttack">Cuttack</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Venues" class="form-label text-dark">Venues</label>
+                        <select id="Venues" name="Venues" asp-for="Venues" asp-items="ViewBag.VenueList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Venue --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Services" class="form-label text-dark">Services</label>
+                        <select id="Services" name="Services" asp-for="Services" asp-items="ViewBag.ServiceList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Service --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Capacity" class="form-label text-dark">Capacity</label>
+                        <select id="Capacity" name="Capacity" asp-for="Capacity" asp-items="ViewBag.CapacityList" class="form-control form-control-sm" required>
+                            <option value="">-- Select Capacity --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="EventDate" class="form-label text-dark">Event Date</label>
+                        <input id="EventDate" asp-for="EventDate" type="datetime-local" class="form-control form-control-sm" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="Description" class="form-label text-dark">Description</label>
+                        <textarea id="Description" asp-for="Description" class="form-control form-control-sm"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="BookingList" class="btn btn-secondary btn-sm">Cancel</a>
+                    <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery for Dynamic Event Loading -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#EventName").change(function () {
+            var eventId = $(this).val();
+
+            if (eventId) {
+                $.ajax({
+                    url: '@Url.Action("GetEventDetails", "User")',
+                    type: 'GET',
+                    data: { eventId: eventId },
+                    success: function (data) {
+                        if (data) {
+                            // $("#Location").val(data.location);
+                            $("#Venues").val(data.venue);
+                            $("#Services").val(data.service);
+                            $("#Capacity").val(data.capacity);
+                        } else {
+                            $(" #Venues, #Services, #Capacity").val('');
+                        }
+                    },
+                    error: function () {
+                        alert("Error fetching event details.");
+                    }
+                });
+            } else {
+                $(" #Venues, #Services, #Capacity").val('');
+            }
+        });
+    });
+</script>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Location').change(function () {
+                var selectedLocation = $(this).val();
+
+                if (selectedLocation) {
+                    $.ajax({
+                        url: '/User/GetVenuesByLocation',
+                        type: 'GET',
+                        data: { location: selectedLocation },
+                        success: function (venues) {
+                            var $venueDropdown = $('#Venues');
+                            $venueDropdown.empty();
+                            $venueDropdown.append($('<option>').val('').text('-- Select Venue --'));
+
+                            $.each(venues, function (index, venue) {
+                                $venueDropdown.append($('<option>').val(venue).text(venue));
+                            });
+                        }
+                    });
+                } else {
+                    $('#Venues').empty().append($('<option>').val('').text('-- Select Venue --'));
+                }
+            });
+        });
+    </script>
+}
+ *@
+ }

@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Booking List";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model List<EVENT_ORGANIZER.Models.EventBookingModel>
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">My Bookings</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Location</th>
+                            <th>Venue</th>
+                            <th>Services</th>
+                            <th>Capacity</th>
+                            <th>Event Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model)
+                        {
+                            <tr>
+                                <td>@booking.EventName</td>
+                                <td>@booking.Location</td>
+                                <td>@booking.Venues</td>
+                                <td>@booking.Services</td>
+                                <td>@booking.Capacity</td>
+                                <td>@booking.EventDate.ToString("yyyy-MM-dd HH:mm")</td>
+                                <td>
+                                    <span class="badge @(booking.BookingStatus == "Cancelled" ? "bg-danger" : "bg-success")">
+                                        @booking.BookingStatus
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (booking.BookingStatus != "Cancelled")
+                                    {
+                                        <a asp-action="EditBooking" asp-route-id="@booking.BookingId" class="btn btn-warning btn-sm">Edit</a>
+                                        <a asp-action="CancelBooking" asp-route-id="@booking.BookingId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Cancel</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
